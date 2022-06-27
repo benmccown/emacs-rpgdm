@@ -98,7 +98,7 @@ and ARGS are substitued values."
 (defun rpgdm-last-results-previous ()
   "Display results from an earlier call to `rpgdm-message'."
   (interactive)
-  (incf rpgdm-last-results-ptr)
+  (cl-incf rpgdm-last-results-ptr)
   (when (>= rpgdm-last-results-ptr (ring-length rpgdm-last-results))
     (setq rpgdm-last-results-ptr 0))
   (message "%d> %s" rpgdm-last-results-ptr (ring-ref rpgdm-last-results rpgdm-last-results-ptr)))
@@ -108,7 +108,7 @@ and ARGS are substitued values."
 Meant to be used with `rpgdm-last-results-previous'."
   (interactive)
   (when (> rpgdm-last-results-ptr 0)
-    (decf rpgdm-last-results-ptr))
+    (cl-decf rpgdm-last-results-ptr))
   (message "%d> %s" rpgdm-last-results-ptr (ring-ref rpgdm-last-results rpgdm-last-results-ptr)))
 
 (defun rpgdm-paste-last-message ()
